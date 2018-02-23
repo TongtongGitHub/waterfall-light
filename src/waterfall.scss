@@ -1,0 +1,24 @@
+* {
+	margin: 0;
+	padding: 0;
+	background-color: #F3E5E5;
+}
+#container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#container {
+	width: 1300px;
+	margin: 0 auto; /*水平居中*/
+}
+#container .img-box {
+	cursor: pointer;
+	float: left;
+	padding: 5px;
+}
+
+#container .img-box img {
+	width: 250px;
+	height: auto;
+}
