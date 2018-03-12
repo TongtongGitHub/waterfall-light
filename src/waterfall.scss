@@ -1,24 +1,32 @@
-* {
+html,body {
 	margin: 0;
 	padding: 0;
-	background-color: #F3E5E5;
+	background-color: #fff;
 }
-#container:after {
-	content: "";
-	display: block;
-	clear: both;
-}
-#container {
-	width: 1300px;
-	margin: 0 auto; /*水平居中*/
-}
-#container .img-box {
-	cursor: pointer;
-	float: left;
-	padding: 5px;
-}
-
-#container .img-box img {
-	width: 250px;
-	height: auto;
+.wfl-wrapper {
+    width: 100%;
+    .wfl-image-container {
+        font-size: 0;
+        position: relative;
+        height: 0;
+        padding-bottom: 20%;
+        overflow: hidden;
+        float: left;
+        box-sizing: border-box;
+        border: 1px solid #e6ecf2;
+        margin-left: -1px;
+        margin-bottom: -1px;
+        img {
+            max-width: 100%; //width: 100%;
+            max-height: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+    }
 }

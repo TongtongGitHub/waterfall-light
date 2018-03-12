@@ -5,7 +5,7 @@
   "main": "waterfall.html",
   "scripts": {
     "dev": "parcel src/waterfall.html",
-    "build": "parcel build waterfall.js -d build"
+    "build": "parcel build src/waterfall.html -d build"
   },
   "author": "liutongtong",
   "license": "MIT",
