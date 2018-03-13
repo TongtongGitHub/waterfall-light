@@ -1,7 +1,6 @@
 /**
  * waterfall-light.js
  * auther: liutongtong
- * dependency: jQuery
  */
 
 //these are default config
@@ -13,7 +12,7 @@ let defaultConfig = {
 };
 
 function Waterfall(cf) {
-    this.config = $.extend({}, defaultConfig, cf);
+    this.config = Object.assign({}, defaultConfig, cf);
     this.init();
 }
 Waterfall.prototype = {
@@ -32,14 +31,25 @@ Waterfall.prototype = {
         this.renderHTML();
 
         window.onscroll = function () {
-            if ($('.' + _this._containerClass).last().offset().top < $(window).height() + $(document).scrollTop()) {
-                _this.renderHTML();
-            }
+            _this.renderNext();
         }
         window.onresize = function () {
-            if ($('.' + _this._containerClass).last().offset().top + $(document).scrollTop()) {
-                _this.renderHTML();
-            }
+            _this.renderNext();
+        }
+    },
+    insertNextElem: function(src) {
+        let elem = document.createElement('div');
+        elem.setAttribute('class', this._containerClass);
+        let pic = document.createElement('img');
+        pic.setAttribute('src', src);
+        elem.appendChild(pic);
+        document.getElementsByClassName(this._wrapperClass)[0].appendChild(elem);
+    },
+    renderNext: function () {
+        let elems = document.getElementsByClassName(this._containerClass);
+        let curElem = elems[elems.length - 1];
+        if(curElem.offsetTop < document.documentElement.clientHeight + document.documentElement.scrollTop){
+            this.renderHTML()
         }
     },
     renderHTML: function () {
@@ -50,15 +60,13 @@ Waterfall.prototype = {
             this.curRowIndex++;
         }
 
-        let _itemTemp = "<div class='" + this._containerClass +"'><img src='" + this._data[this.curIndex].src + "'/></div>";
-        $('.' + this._wrapperClass).append(_itemTemp);
-        let curItem = $('.' + this._containerClass).last();
-        let width = 100 / this.colNum + '%';
-        curItem.css('width', width);
+        this.insertNextElem(this._data[this.curIndex].src);
 
-        if ($('.' + this._containerClass).last().offset().top < $(window).height() + $(document).scrollTop()) {
-            return this.renderHTML();
-        }
+        let elems = document.getElementsByClassName(this._containerClass);
+        let curElem = elems[elems.length - 1];
+        let width = 100 / this.colNum + '%';
+        curElem.setAttribute('style', 'width: ' + width);
+        this.renderNext();
     }
 };
 

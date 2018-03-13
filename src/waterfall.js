@@ -1,6 +1,4 @@
 import './waterfall.scss'
-import $ from 'jquery';
-window.$ = $;
 import Waterfall from "./waterfall-light";
 
 let data = [];
