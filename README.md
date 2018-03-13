@@ -1,5 +1,5 @@
-# Waterfall (jQuery)
-#### A straightforward waterfall component based on jquery.
+# Waterfall-light
+#### A straightforward waterfall component with venilla javascript.
 
 ## Getting started
 If you don't install [Parcel](https://parceljs.org/) globally, you need to install [Parcel](https://parceljs.org/) first:
